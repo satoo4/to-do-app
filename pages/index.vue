@@ -17,22 +17,22 @@
 
 <script setup lang="ts">
 // const taskNameList = ref<string[]>(['vue','Vue3','Nuxt3']);
-const taskName =ref<string>('');
+const taskName = ref<string>('');
 const taskNames = ref<string[]>([]);
-const addTask =() =>{
-  if (taskName.value ===''){
+const addTask = () => {
+  if (taskName.value === '') {
     return;
   }
   //  taskNameList.value.push(taskName.value);
   taskNames.value.push(taskName.value);
-   taskName.value='';
+  taskName.value = '';
 }
 
-const completeTask =(completedTaskName: string) =>{
-    taskNames.value =taskNames.value.filter((task:string) => {
-      return completedTaskName !==task
-    });
-  }
+const completeTask = (completedTaskName: string) => {
+  taskNames.value = taskNames.value.filter((task: string) => {
+    return completedTaskName !== task
+  });
+}
 
 
 </script>
