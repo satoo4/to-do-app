@@ -8,3 +8,16 @@ module.exports = {
   plugins: [],
 }
 
+
+module.exports={
+  theme:{
+    extend:{
+      colors:{
+        primary:'#1D4ED8',
+      },
+      fontFamily:{
+        sans:['Graphik','sans-serif'],
+      },
+    },
+  },
+};
