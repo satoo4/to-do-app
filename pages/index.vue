@@ -134,6 +134,7 @@ onAuthStateChanged(auth, (user) => {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     fetchAllTasksAndFilterLocally();
+    router.push('/tasks')
   } else {
     tasks.value = [];
   }
