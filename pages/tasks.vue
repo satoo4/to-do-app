@@ -115,6 +115,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     // サインインしている場合、タスクを取得
     fetchAllTasksAndFilterLocally();
+    router.push('/tasks')
   } else {
     console.log("no user signed in");
     tasks.value = [];
