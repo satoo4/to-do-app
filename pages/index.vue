@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { initializeApp } from "firebase/app";
-import { getFirestore, Timestamp, deleteDoc, writeBatch, orderBy, query } from "firebase/firestore";
-import { collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
-import { onMounted, ref, createApp } from "vue";
+import { getFirestore, Timestamp, writeBatch,} from "firebase/firestore";
+import { collection, addDoc, getDocs,} from "firebase/firestore";
+import {ref} from "vue";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 // import { useRouter } from 'vue-router';
 
@@ -17,8 +17,6 @@ const firebaseConfig = {
 };
 
 const router = useRouter()
-// let unsubscribe: (() => void) | undefined;
-
 const taskName = ref<string>('');
 const tasks = ref<Task[]>([]);
 
@@ -112,15 +110,10 @@ const completeTask = async (completedTaskName: string) => {
   }
 }
 
-
 interface Task {
   name: string;
   date: Timestamp;
 }
-
-
-
-
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -132,14 +125,7 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-
-onMounted(() => {
-  fetchAllTasksAndFilterLocally();
-});
-
-
 // delete tasks from Firestore
-
 onAuthStateChanged(auth, (user) => {
   if (user) {
     fetchAllTasksAndFilterLocally();
@@ -191,25 +177,9 @@ const handleSignIn = async () => {
   }
 };
 
-
-
-
 </script>
 
-<!-- <style>
-
-#title{
-  color:green;
-  text-align: center;
-  margin-top: 2em;
-  font-size: 1.5em;
-  text-decoration: underline;
-
-}
-</style> -->
-
 <template>
-  <!-- <nuxt-link to="/signin">about.vueへ</nuxt-link> -->
   <div class="mx-11">
     <h1 class="mt-5 text-7xl text-green-700  flex flex-col items center items-center underline">To Do App</h1>
 
@@ -268,14 +238,7 @@ const handleSignIn = async () => {
           </div>
 
         </div>
-
-
-
-
       </div>
     </div>
-
-    <!-- <input v-model="taskName">
-    <p>{{ taskName }}</p> -->
   </div>
 </template>
