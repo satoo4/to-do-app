@@ -115,6 +115,11 @@ interface Task {
   date: Timestamp;
 }
 
+onMounted(()=>{
+  fetchAllTasksAndFilterLocally();
+})
+
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // サインインしている場合、タスクを取得
