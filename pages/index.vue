@@ -115,10 +115,10 @@ interface Task {
   date: Timestamp;
 }
 
+
 onMounted(()=>{
   fetchAllTasksAndFilterLocally();
 })
-
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
