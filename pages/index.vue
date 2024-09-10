@@ -4,7 +4,7 @@ import { getFirestore, Timestamp, writeBatch,} from "firebase/firestore";
 import { collection, addDoc, getDocs,} from "firebase/firestore";
 import {ref} from "vue";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-// import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -241,4 +241,6 @@ const handleSignIn = async () => {
       </div>
     </div>
   </div>
-</template>
+</template> 
+
+
