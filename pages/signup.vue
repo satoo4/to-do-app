@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { initializeApp } from "firebase/app";
 
-// Your web app's Firebase configuration
+// web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD6K0raBgmIOLZAWwlCiX9oAZ_8TfaOrDQ",
   authDomain: "YOUR_AUTH_DOMAIN",
@@ -15,7 +15,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const signupEmail = ref('');
 const signupPassword = ref('');
 const router = useRouter();
@@ -42,7 +41,6 @@ const handleSignIn = () => {
   router.push('/signin');
 }
 </script>
-
 
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 p-6">

@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { initializeApp } from "firebase/app";
-import { getFirestore, Timestamp, deleteDoc, writeBatch, orderBy, query } from "firebase/firestore";
-import { collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
-import { onMounted, ref, createApp } from "vue";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, browserLocalPersistence, setPersistence } from "firebase/auth";
-import { useRouter, createWebHashHistory } from 'vue-router';
-
+import { getFirestore, Timestamp,writeBatch} from "firebase/firestore";
+import { collection, addDoc, getDocs} from "firebase/firestore";
+import {ref} from "vue";
+import { getAuth,signOut, onAuthStateChanged, browserLocalPersistence, setPersistence } from "firebase/auth";
+import { useRouter} from 'vue-router';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,11 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-
-
-
 const router = useRouter()
-// let unsubscribe: (() => void) | undefined;
 
 setPersistence(auth, browserLocalPersistence).catch((error) => {
   console.error("Error setting persistence:", error);
@@ -72,12 +67,10 @@ const fetchAllTasksAndFilterLocally = async () => {
     return;
   }
   console.log(user);
-  // debugger
 
   try {
     const querySnapshot = await getDocs(collection(db, `users/${user.uid}/tasks`));
     tasks.value = querySnapshot.docs
-      // .filter(doc => doc.data().uid === user.uid)
       .sort((a, b) => b.data().date.toMillis() - a.data().date.toMillis()) // ローカルで並び替え
       .map(doc => ({
         name: doc.data().name,
@@ -111,17 +104,10 @@ const completeTask = async (completedTaskName: string) => {
   }
 }
 
-
-
-
 interface Task {
   name: string;
   date: Timestamp;
 }
-
-
-
-
 
 onAuthStateChanged(auth, (user) => {
   console.log("test")
@@ -136,7 +122,6 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-
 // サインアウト用の関数
 const logout = async () => {
   try {
@@ -147,13 +132,9 @@ const logout = async () => {
     console.log("Error signing out", e);
   }
 };
-
-
 </script>
 
-
 <template>
-  <!-- <nuxt-link to="/signin">about.vueへ</nuxt-link> -->
   <div class="mx-11 p-6 ">
     <h1 class="mt-5 text-7xl  font-bold text-blue-700  flex flex-col items-center underline">To Do List</h1>
 
